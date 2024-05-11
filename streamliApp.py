@@ -33,7 +33,7 @@ with st.sidebar:
             st.success('Success!', icon='✅')
     os.environ['GOOGLE_API_KEY'] = api_key
     "[Get a Google Gemini API key](https://ai.google.dev/)"
-    "[View the source code](https://github.com/lg-pereira/FixBot/streamliApp.py)"
+    "[View the source code](https://github.com/lg-pereira/FixBot/blob/main/streamliApp.py)"
     
 
 # Set the title and caption for the Streamlit app
