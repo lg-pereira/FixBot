@@ -46,7 +46,7 @@ tab1, tab2 = st.tabs(["🌏 Perguntas - Fin Bot", "🖼️ Envio de fotos e víd
 # Code for Gemini Pro model
 with tab1:
     st.write("💬 Fin Bot - Perguntas")
-    st.subheader("🛠️ Pergunte-me e vou te ajudar!")
+    st.subheader("🛠️ Pergunte e vou te ajudar!")
     
     fix_issue = st.text_input("Descreva seu problema: \n\n",key="fix_issue",value="Meu celular não funciona")
     other_info = st.text_input("Alguma outra informação relevante? \n\n",key="other_info",value="Meu celular caiu na água suja da enchente")
@@ -81,7 +81,7 @@ with tab1:
     },
   ]
     
-    generate_t2t = st.button("Me ajude!", key="generate_t2t")
+    generate_t2t = st.button("Me ajuda!", key="generate_t2t")
     model = genai.GenerativeModel("gemini-pro", generation_config=config, safety_settings=safety)
     if generate_t2t and prompt:
         with st.spinner("Buscando as informações para te ajudar..."):
@@ -99,7 +99,7 @@ with tab2:
     st.write("🤖 Fin Bot Vision - Envie fotos")
     st.subheader("🥽 Eu vou ver como posso te ajudar!")
     
-    image_prompt = st.text_input("Descreva seu problema:", placeholder="Prompt", label_visibility="visible", key="image_prompt")
+    image_prompt = st.text_input("Descreva seu problema:", placeholder="", label_visibility="visible", key="image_prompt")
     uploaded_file = st.file_uploader("Escolha uma imagem", type=["jpg", "jpeg", "png"])
     image = ""
 
@@ -107,7 +107,7 @@ with tab2:
         image = Image.open(uploaded_file)
         st.image(image, caption="Uploaded Image.", use_column_width=True)
 
-    submit=st.button("Gere o passo a passo")
+    submit=st.button("Me ajuda!")
 
     if submit:
         model = genai.GenerativeModel('gemini-pro-vision')
@@ -117,7 +117,7 @@ with tab2:
             else:
                 response = model.generate_content(image)
         response = response.text
-        st.subheader("Me ajude!")
+        st.subheader("Guia passo a passo")
         st.write(response)
 
     
