@@ -100,6 +100,10 @@ with tab2:
     st.subheader("🥽 Eu vou ver como posso te ajudar!")
     
     image_prompt = st.text_input("Descreva seu problema:", placeholder="", label_visibility="visible", key="image_prompt")
+    prompt_img = f"""Você é um especialista em ajuda humanitária pós-desastres. Leve em conta que meu nível de conhecimento sobre o assunto é: {level_Expertise}. Me dê um passo a passo para resolver: {prompt_img}. 
+    """
+    help = f"""Você é um especialista em ajuda humanitária pós-desastres. Meu problema está nessa imagem, preciso de ajuda. 
+    """
     uploaded_file = st.file_uploader("Escolha uma imagem", type=["jpg", "jpeg", "png"])
     image = ""
 
@@ -113,9 +117,9 @@ with tab2:
         model = genai.GenerativeModel('gemini-pro-vision')
         with st.spinner("Buscando as informações para te ajudar..."):
             if image_prompt!="":
-                response = model.generate_content([image_prompt,image])
+                response = model.generate_content([prompt_img,image])
             else:
-                response = model.generate_content(image)
+                response = model.generate_content(help,image)
         response = response.text
         st.subheader("Guia passo a passo")
         st.write(response)
