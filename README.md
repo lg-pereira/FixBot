@@ -1,11 +1,12 @@
 # Fin Bot: Seu Especialista Pós-Desastres (Your Post-Disaster Specialist)
 
-Fin Bot é um assistente virtual útil para ajudá-lo a lidar com situações pós-desastres. Ele combina o poder da API Google Gemini com a simplicidade do Streamlit para fornecer orientações passo a passo e suporte especializado.
+O Fin Bot é um assistente virtual inovador que oferece suporte especializado em situações pós-desastres. Sua robusta arquitetura, combinando a API Google Gemini com a simplicidade do Streamlit, fornece aos usuários orientações passo a passo e auxílio técnico de alto nível.
 
-# Recursos (Resources)
+# Funcionalidades
 <ul>
-  <li>Obtenha uma chave de API do Google Gemini (<a href="https://ai.google.dev/">Get a Google Gemini API Key </a>) </li>
-  <li>Veja o código-fonte (<a href="https://github.com/lg-pereira/FixBot/streamliApp.py">View the Source Code</a>) </li>
+  <li><b>Resolução de Problemas Baseado em Linguagem Natural:</b> Através de perguntas abertas e descrições detalhadas, o Fin Bot utiliza processamento de linguagem natural avançado para analisar as necessidades do usuário e gerar soluções personalizadas.</li>
+  <li><b>Análise Visual Avançada:</b> O Fin Bot Vision permite o envio de imagens e vídeos do problema em questão. Combinando inteligência artificial e visão computacional, o sistema extrai informações visuais e textuais para fornecer instruções precisas e contextualizadas.</li>
+  <li><b>Segurança Aprimorada:</b> O Fin Bot segue rigorosamente as diretrizes de segurança do Google AI, garantindo que as respostas sejam úteis, informativas e livres de conteúdo prejudicial.</li>
 </ul>
 
 # Instalação (Installation)
