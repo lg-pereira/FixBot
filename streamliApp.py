@@ -33,8 +33,8 @@ with st.sidebar:
             st.success('Success!', icon='✅')
     os.environ['GOOGLE_API_KEY'] = api_key
     "[Get a Google Gemini API key](https://ai.google.dev/)"
-    "[View the source code](https://github.com/wms31/streamlit-gemini/blob/main/app.py)"
-    "[Check out the blog post!](https://letsaiml.com/creating-google-gemini-app-with-streamlit/)"
+    "[View the source code](https://github.com/lg-pereira/FixBot/streamliApp.py)"
+    
 
 # Set the title and caption for the Streamlit app
 st.title("🤖 FixBot - seu consultor para consertos")
@@ -48,11 +48,11 @@ with tab1:
     st.write("💬 FixBot - Apenas perguntas")
     st.subheader("🛠️ Consultor para pequenas manutenções")
     
-    fix_issue = st.text_input("Descreva seu problema: \n\n",key="fix_issue",value="Arrumar a lâmpada")
-    # days = st.text_input("How many days would you like the itinerary to be? \n\n",key="days",value="5")
+    fix_issue = st.text_input("Descreva seu problema: \n\n",key="fix_issue",value="Meu celular não funciona")
     level_Expertise = st.text_input("Qual seu nível de experiência? \n\n",key="level_Expertise",value="Leigo")
+    other_info = st.text_input("Alguma outra informações relevante? \n\n",key="other_info",value="Meu celular caiu na água suja da enchente")
         
-    prompt = f"""Você é um especialista em manutenção residencial pós-desastres. Me dê um passo a passo para: {fix_issue}. Leve em conta que meu nível de conhecimento sobre o assunto é: {level_Expertise}
+    prompt = f"""Você é um especialista em manutenção pós-desastres. Leve em conta que meu nível de conhecimento sobre o assunto é: {level_Expertise} e que isso aconteceu: {other_info}. Me dê um passo a passo para resolver: {fix_issue}. 
     """
     
     config = {
@@ -88,35 +88,35 @@ with tab1:
             with plan_tab: 
                 response = model.generate_content(prompt)
                 if response:
-                    st.write("Guia passo a passo:")
+                    st.write("Guia passo a passo")
                     st.write(response.text)
             with prompt_tab: 
                 st.text(prompt)
 
 # Code for Gemini Pro Vision model
 with tab2:
-    st.write("🖼️ Using Gemini Pro Vision - Multimodal model")
-    st.subheader("🔮 Generate image to text responses")
+    st.write("🤖 FixBot Vision - Envie fotos")
+    st.subheader("🥽 Eu vou ver como posso te ajudar!")
     
-    image_prompt = st.text_input("Ask any question about the image", placeholder="Prompt", label_visibility="visible", key="image_prompt")
-    uploaded_file = st.file_uploader("Choose an image", type=["jpg", "jpeg", "png"])
+    image_prompt = st.text_input("Descreva seu problema:", placeholder="Prompt", label_visibility="visible", key="image_prompt")
+    uploaded_file = st.file_uploader("Escolha uma imagem", type=["jpg", "jpeg", "png"])
     image = ""
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         st.image(image, caption="Uploaded Image.", use_column_width=True)
 
-    submit=st.button("Generate Response")
+    submit=st.button("Gere o passo a passo")
 
     if submit:
         model = genai.GenerativeModel('gemini-pro-vision')
-        with st.spinner("Generating your response using Gemini..."):
+        with st.spinner("Buscando as informações para te ajudar..."):
             if image_prompt!="":
                 response = model.generate_content([image_prompt,image])
             else:
                 response = model.generate_content(image)
         response = response.text
-        st.subheader("Gemini's response")
+        st.subheader("Guia passo a passo")
         st.write(response)
 
     
