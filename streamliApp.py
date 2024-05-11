@@ -53,7 +53,7 @@ with tab1:
     #level_Expertise = st.text_input("Qual seu nível de experiência? \n\n",key="level_Expertise",value="Leigo")
     level_Expertise = "Leigo"
         
-    prompt = f"""Você é um especialista em ajuda humanitária pós-desastres. Leve em conta que meu nível de conhecimento sobre o assunto é: {level_Expertise} e que isso aconteceu: {other_info}. Me dê um passo a passo para resolver: {fix_issue}. 
+    prompt = f"""Você é um especialista em ajuda humanitária pós-desastres. Leve em conta que meu nível de conhecimento sobre o assunto é: {level_Expertise} e que isso aconteceu: {other_info}. Me dê um passo a passo para resolver: {fix_issue}.
     """
     
     config = {
@@ -102,6 +102,8 @@ with tab2:
     image_prompt = st.text_input("Descreva seu problema:", placeholder="", label_visibility="visible", key="image_prompt")
     uploaded_file = st.file_uploader("Escolha uma imagem", type=["jpg", "jpeg", "png"])
     image = ""
+    help = f"""Você é um especialista em ajuda humanitária pós-desastres. Mê de um passo a passo para resolver: {image_prompt}. O problema está na imagem.
+    """
 
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
