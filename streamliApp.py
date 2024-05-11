@@ -16,7 +16,7 @@ genai.configure(api_key=api_key)
 
 # Set the page configuration for the Streamlit app
 st.set_page_config(
-    page_title="FixBot with Google Gemini",
+    page_title="Fin Bot with Google Gemini",
     page_icon="🤖"
 )
 
@@ -33,26 +33,27 @@ with st.sidebar:
             st.success('Success!', icon='✅')
     os.environ['GOOGLE_API_KEY'] = api_key
     "[Get a Google Gemini API key](https://ai.google.dev/)"
-    "[View the source code](https://github.com/lg-pereira/FixBot/streamliApp.py)"
+    "[View the source code](https://github.com/lg-pereira/Fin Bot/streamliApp.py)"
     
 
 # Set the title and caption for the Streamlit app
-st.title("🤖 FixBot - seu consultor para consertos")
-st.caption("🚀 FixBot powered by Google Gemini")
+st.title("🤖 Fin Bot - Seu especialista pós-desastres")
+st.caption("🚀 FinBot powered with Google Gemini")
 
 # Create tabs for the Streamlit app
-tab1, tab2 = st.tabs(["🌏 Perguntas - FixBot", "🖼️ Envio de fotos e vídeos - FixBot Vision"])
+tab1, tab2 = st.tabs(["🌏 Perguntas - Fin Bot", "🖼️ Envio de fotos e vídeos - Fin Bot Vision"])
 
 # Code for Gemini Pro model
 with tab1:
-    st.write("💬 FixBot - Apenas perguntas")
-    st.subheader("🛠️ Consultor para pequenas manutenções")
+    st.write("💬 Fin Bot - Perguntas")
+    st.subheader("🛠️ Pergunte-me e vou te ajudar!")
     
     fix_issue = st.text_input("Descreva seu problema: \n\n",key="fix_issue",value="Meu celular não funciona")
-    level_Expertise = st.text_input("Qual seu nível de experiência? \n\n",key="level_Expertise",value="Leigo")
-    other_info = st.text_input("Alguma outra informações relevante? \n\n",key="other_info",value="Meu celular caiu na água suja da enchente")
+    other_info = st.text_input("Alguma outra informação relevante? \n\n",key="other_info",value="Meu celular caiu na água suja da enchente")
+    #level_Expertise = st.text_input("Qual seu nível de experiência? \n\n",key="level_Expertise",value="Leigo")
+    level_Expertise = "Leigo"
         
-    prompt = f"""Você é um especialista em manutenção pós-desastres. Leve em conta que meu nível de conhecimento sobre o assunto é: {level_Expertise} e que isso aconteceu: {other_info}. Me dê um passo a passo para resolver: {fix_issue}. 
+    prompt = f"""Você é um especialista em ajuda humanitária pós-desastres. Leve em conta que meu nível de conhecimento sobre o assunto é: {level_Expertise} e que isso aconteceu: {other_info}. Me dê um passo a passo para resolver: {fix_issue}. 
     """
     
     config = {
@@ -95,7 +96,7 @@ with tab1:
 
 # Code for Gemini Pro Vision model
 with tab2:
-    st.write("🤖 FixBot Vision - Envie fotos")
+    st.write("🤖 Fin Bot Vision - Envie fotos")
     st.subheader("🥽 Eu vou ver como posso te ajudar!")
     
     image_prompt = st.text_input("Descreva seu problema:", placeholder="Prompt", label_visibility="visible", key="image_prompt")
@@ -116,7 +117,7 @@ with tab2:
             else:
                 response = model.generate_content(image)
         response = response.text
-        st.subheader("Guia passo a passo")
+        st.subheader("Me ajude!")
         st.write(response)
 
     
