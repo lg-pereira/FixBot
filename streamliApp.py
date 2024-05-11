@@ -100,7 +100,7 @@ with tab2:
     st.subheader("🥽 Eu vou ver como posso te ajudar!")
     
     image_prompt = st.text_input("Descreva seu problema:", placeholder="", label_visibility="visible", key="image_prompt")
-    # prompt_img = f'Você é um especialista em ajuda humanitária pós-desastres. Leve em conta que meu nível de conhecimento sobre o assunto é: {level_Expertise}. Me dê um passo a passo para resolver: {image_prompt}.'
+
     help ="Você é um especialista em ajuda humanitária pós-desastres. Meu problema está nessa imagem, preciso de ajuda."
     uploaded_file = st.file_uploader("Escolha uma imagem", type=["jpg", "jpeg", "png"])
     image = ""
